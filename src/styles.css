@@ -1,0 +1,76 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+}
+.topnav {
+  text-align: center;
+  padding: 40px;
+}
+
+button {
+  background-color: #007c7c;
+  color: whitesmoke;
+  border: transparent;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: whitesmoke;
+  color: #007c7c;
+  cursor: grab;
+}
+
+.cityName {
+  color: #007c7c;
+  font-weight: bolder;
+}
+
+img {
+  width: 100px;
+  display: flex;
+  left: 40px;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.peopleComments {
+  color: #007c7c;
+  text-align: center;
+  padding: 1px;
+}
+
+h2 {
+  padding: 20px;
+  font-weight: lighter;
+}
+
+h1 {
+  font-weight: lighter;
+  padding: 5px;
+}
+
+.col {
+  display: fixed;
+  left: 10px;
+}
+
+.currentTemp {
+  font-weight: 500px;
+  font-size: 36px;
+}
+
+.otherStats {
+  font-size: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: -67px;
+  left: 155px;
+  font-weight: 200;
+}
+
+.units {
+  position: relative;
+  top: -15px;
+  font-size: 10px;
+}
