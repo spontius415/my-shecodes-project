@@ -49,6 +49,10 @@ h1 {
   padding: 5px;
 }
 
+div {
+  display: block;
+}
+
 .col {
   display: fixed;
   left: 10px;
@@ -73,4 +77,46 @@ h1 {
   position: relative;
   top: -15px;
   font-size: 10px;
+}
+
+.WeatherForecast {
+  border-bottom: 1px solid #f9f7fe;
+  margin: 40px 0;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.WeatherForecast.forecast-time {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.WeatherForecast canvas {
+  display: block;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+canvas {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+.WeatherForecast.forecast-temperature {
+  color: #007c7c;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.WeatherForecast.forecast-temperature-min {
+  margin-left: 10px;
+  opacity: 0.6;
 }
