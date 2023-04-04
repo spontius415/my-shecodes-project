@@ -1,4 +1,25 @@
 body {
+  background: #007c7c;
+}
+
+div {
+  display: block;
+}
+
+.App {
+  margin: 60px auto;
+  max-width: 800px;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.Weather {
+  background: #f9f7fe;
+  border-radius: 16px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+  color: aliceblue;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
 }
