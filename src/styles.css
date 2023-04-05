@@ -86,14 +86,14 @@ div {
 
 .currentTemp {
   font-weight: 500px;
-  font-size: 70px;
+  font-size: 60px;
   line-height: 1;
 }
 
 .Weather .units {
   position: relative;
   font-size: 10px;
-  top: -32px;
+  top: -20px;
 }
 
 .WeatherForecast {
