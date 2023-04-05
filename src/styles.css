@@ -52,7 +52,7 @@ button:hover {
   display: flex;
   left: 20px;
   flex-direction: column;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .peopleComments {
@@ -93,7 +93,7 @@ div {
 .Weather .units {
   position: relative;
   font-size: 10px;
-  top: -20px;
+  top: -10px;
 }
 
 .WeatherForecast {
