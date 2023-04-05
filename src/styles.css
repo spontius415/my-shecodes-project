@@ -60,6 +60,10 @@ img {
   padding: 1px;
 }
 
+.WeatherInfo {
+  margin-top: 20px;
+}
+
 h2 {
   padding: 20px;
   font-weight: lighter;
@@ -140,4 +144,9 @@ canvas {
 .WeatherForecast.forecast-temperature-min {
   margin-left: 10px;
   opacity: 0.8;
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 50%;
 }
