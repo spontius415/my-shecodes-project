@@ -1,6 +1,4 @@
 //show current date
-let currentTime = new Date();
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let currentHour = date.getHours();
@@ -37,10 +35,8 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-console.log(formatDate(currentTime));
-
 let dateUpdate = document.querySelector("#today-date");
-dateUpdate.innerHTML = currentTime;
+dateUpdate.innerHTML = formatDate;
 
 //Show City with APIs
 function search(city) {
