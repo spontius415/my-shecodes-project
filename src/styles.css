@@ -157,7 +157,7 @@ canvas {
   position: relative;
   display: flex;
   flex-direction: column;
-  left: 155px;
+  right: 155px;
   color: darkslategray;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
