@@ -1,7 +1,17 @@
 //show current date
 let currentTime = new Date();
 
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let currentHour = date.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+  let currentMinute = date.getMinutes();
+  if (currentMinute < 10) {
+    currentMinute = `0${currentMinute}`;
+  }
+
   let days = [
     "Sunday",
     "Monday",
@@ -13,18 +23,18 @@ function formatDate(date) {
   ];
 
   let currentDay = days[date.getDay()];
-  let currentHour = date.getHours();
-  if ((currentHour, 10)) {
-    currentHour = `0${currentHour}`;
-  }
-  let currentMinute = date.getMinutes();
-  if (currentMinute < 10) {
-    currentMinute = `0${currentMinute}`;
-  }
 
   let formattedDate = `${currentDay} ${currentHour}:${currentMinute}`;
 
   return formattedDate;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
 
 console.log(formatDate(currentTime));
@@ -35,7 +45,7 @@ dateUpdate.innerHTML = currentTime;
 //Show City with APIs
 function search(city) {
   let apiKey = "1a8a00a0d298494828889a5f4e560ba8";
-  let units = "metric";
+  let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
 }
