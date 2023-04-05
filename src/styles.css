@@ -150,3 +150,22 @@ canvas {
   flex: 0 0 auto;
   width: 50%;
 }
+
+.Weather ul {
+  margin: 0;
+  padding: 0;
+}
+
+.Weather li {
+  color: rgba(65, 50, 100, 0.08);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.WeatherInfo.temperature-container {
+  align-items: center;
+  margin-top: 30px;
+}
