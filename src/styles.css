@@ -88,16 +88,6 @@ div {
   font-size: 36px;
 }
 
-.otherStats {
-  font-size: 12px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  top: -67px;
-  left: 155px;
-  font-weight: 200;
-}
-
 .units {
   position: relative;
   top: -15px;
@@ -163,9 +153,15 @@ canvas {
   line-height: 20px;
   list-style: none;
   margin-bottom: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: -67px;
+  left: 155px;
 }
 
 .WeatherInfo.temperature-container {
   align-items: center;
   margin-top: 30px;
+  padding-left: 20px;
 }
