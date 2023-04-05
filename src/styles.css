@@ -46,7 +46,7 @@ button:hover {
   font-weight: bolder;
 }
 
-img {
+.Weather img {
   height: 64px;
   width: 64px;
   display: flex;
