@@ -85,12 +85,12 @@ div {
 
 .currentTemp {
   font-weight: 500px;
-  font-size: 36px;
+  font-size: 52px;
 }
 
 .units {
   position: relative;
-  top: -15px;
+  top: -10px;
   font-size: 10px;
 }
 
@@ -147,7 +147,6 @@ canvas {
 }
 
 .Weather li {
-  color: rgba(65, 50, 100, 0.08);
   font-size: 12px;
   font-weight: 500;
   line-height: 20px;
@@ -156,7 +155,6 @@ canvas {
   position: relative;
   display: flex;
   flex-direction: column;
-  top: -67px;
   left: 155px;
 }
 
@@ -164,4 +162,8 @@ canvas {
   align-items: center;
   margin-top: 30px;
   padding-left: 20px;
+}
+
+.Weather canvas {
+  margin: 10px 0;
 }
