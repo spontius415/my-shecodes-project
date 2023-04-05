@@ -161,6 +161,7 @@ canvas {
   color: darkslategray;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
+  margin-top: 5px;
 }
 
 .WeatherInfo .temperature-container {
