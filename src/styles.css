@@ -153,11 +153,11 @@ canvas {
   font-weight: 500;
   line-height: 20px;
   list-style: none;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   position: relative;
   display: flex;
   flex-direction: column;
-  right: 15px;
+  right: 5px;
   color: darkslategray;
   font-family: "Roboto", sans-serif;
   font-weight: lighter;
