@@ -90,7 +90,7 @@ div {
 
 .units {
   position: relative;
-  top: -10px;
+  top: -5px;
   font-size: 10px;
 }
 
@@ -156,6 +156,9 @@ canvas {
   display: flex;
   flex-direction: column;
   left: 155px;
+  color: darkslategray;
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
 }
 
 .WeatherInfo.temperature-container {
