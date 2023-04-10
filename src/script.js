@@ -40,7 +40,7 @@ dateUpdate.innerHTML = formatDate;
 
 //Show City with APIs
 function search(city) {
-  let apiKey = "1a8a00a0d298494828889a5f4e560ba8";
+  let apiKey = "2ff29bed3181c3526c35cc5408037f85";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
