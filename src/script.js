@@ -27,16 +27,8 @@ function formatDate(timestamp) {
   return formattedDate;
 }
 
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day];
-}
-
 let dateUpdate = document.querySelector("#today-date");
-dateUpdate.innerHTML = formatDate;
+dateUpdate.innerHTML = formatDate(response.data.dt * 1000);
 
 //Show City with APIs
 function search(city) {
