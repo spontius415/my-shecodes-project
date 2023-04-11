@@ -24,9 +24,6 @@ function formatDate(timestamp) {
   return `${currentDay} ${currentHour}:${currentMinute}`;
 }
 
-let dateUpdate = document.querySelector("#today-date");
-dateUpdate.innerHTML = formatDate(response.data.dt * 1000);
-
 //Show City with APIs
 function search(city) {
   let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
@@ -42,17 +39,20 @@ function typeCity(event) {
 }
 
 function showTemperature(response) {
-  document.querySelector("#city-name").innerHTML = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = `${temperature} &#176c`;
   let humidity = response.data.main.humidity;
   let showHumidity = document.querySelector("#humid");
-  showHumidity.innerHTML = `Humidity: ${humidity}%`;
   let precipitation = response.data.main.precipitation;
   let showPrecipitation = document.querySelector("#precip");
-  showPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
   let wind = Math.round(response.data.wind.speed);
   let speedWind = document.querySelector("#wind");
+  let dateUpdate = document.querySelector("#today-date");
+
+  document.querySelector("#city-name").innerHTML = response.data.name;
+  temperatureElement.innerHTML = `${temperature} &#176c`;
+  showHumidity.innerHTML = `Humidity: ${humidity}%`;
+  showPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
   speedWind.innerHTML = `wind: ${wind} m/h`;
+  dateUpdate.innerHTML = formatDate(response.data.dt * 1000);
 }
