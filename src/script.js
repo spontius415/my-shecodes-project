@@ -29,9 +29,9 @@ dateUpdate.innerHTML = formatDate(response.data.dt * 1000);
 
 //Show City with APIs
 function search(city) {
-  let apiKey = "2ff29bed3181c3526c35cc5408037f85";
+  let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
   let units = "imperial";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
