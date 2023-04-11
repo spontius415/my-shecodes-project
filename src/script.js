@@ -32,12 +32,6 @@ function search(city) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-function typeCity(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-  search(city);
-}
-
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temp");
@@ -61,3 +55,12 @@ function showTemperature(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon}.png`
   );
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+let form = document.querySelector("#city-form");
+form.addEventListener("submit", handleSubmit);
