@@ -48,11 +48,16 @@ function showTemperature(response) {
   let wind = Math.round(response.data.wind.speed);
   let speedWind = document.querySelector("#wind");
   let dateUpdate = document.querySelector("#today-date");
+  let iconUpdate = document.querySelector("#icon");
 
   document.querySelector("#city-name").innerHTML = response.data.name;
   temperatureElement.innerHTML = `${temperature} &#176c`;
   showHumidity.innerHTML = `Humidity: ${humidity}%`;
   showPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
-  speedWind.innerHTML = `wind: ${wind} m/h`;
+  speedWind.innerHTML = `Wind: ${wind} m/h`;
   dateUpdate.innerHTML = formatDate(response.data.dt * 1000);
+  iconUpdate.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon}.png`
+  );
 }
