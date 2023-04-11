@@ -66,6 +66,11 @@ div {
 }
 
 h2 {
+  padding: 10px;
+  font-weight: lighter;
+}
+
+h3 {
   padding: 20px;
   font-weight: lighter;
 }

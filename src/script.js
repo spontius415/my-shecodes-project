@@ -25,35 +25,44 @@ function formatDate(timestamp) {
 }
 
 //Show City with APIs
-function search(city) {
+function getForecast(coordinates) {
   let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
-  let units = "imperial";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showTemperature);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temp");
-  let humidity = response.data.main.humidity;
-  let showHumidity = document.querySelector("#humid");
-  let precipitation = response.data.main.precipitation;
-  let showPrecipitation = document.querySelector("#precip");
-  let wind = Math.round(response.data.wind.speed);
-  let speedWind = document.querySelector("#wind");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humid");
+  let precipitationElement = document.querySelector("#precip");
+  let windElement = document.querySelector("#wind");
   let dateUpdate = document.querySelector("#today-date");
   let iconUpdate = document.querySelector("#icon");
 
+  fahrTemperature = response.data.main.temp;
+
   document.querySelector("#city-name").innerHTML = response.data.name;
-  temperatureElement.innerHTML = `${temperature} &#176c`;
-  showHumidity.innerHTML = `Humidity: ${humidity}%`;
-  showPrecipitation.innerHTML = `Precipitation: ${precipitation}%`;
-  speedWind.innerHTML = `Wind: ${wind} m/h`;
+  temperatureElement.innerHTML = Math.round(fahrTemperature);
+  humidityElement.innerHTML = response.data.main.humid;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  precipitationElement.innerHTML = response.data.main.precipitation;
+  windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
   dateUpdate.innerHTML = formatDate(response.data.dt * 1000);
   iconUpdate.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon}.png`
   );
+  iconUpdate.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
+}
+
+function search(city) {
+  let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
+  let units = "imperial";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showTemperature);
 }
 
 function handleSubmit(event) {
