@@ -21,10 +21,7 @@ function formatDate(timestamp) {
   ];
 
   let currentDay = days[date.getDay()];
-
-  let formattedDate = `${currentDay} ${currentHour}:${currentMinute}`;
-
-  return formattedDate;
+  return `${currentDay} ${currentHour}:${currentMinute}`;
 }
 
 let dateUpdate = document.querySelector("#today-date");
