@@ -179,3 +179,12 @@ canvas {
 .Weather canvas {
   margin: 10px 0;
 }
+
+.WeatherInfo .active {
+  color: black;
+  cursor: default;
+}
+
+.WeatherInfo .active:hover {
+  text-decoration: none;
+}
