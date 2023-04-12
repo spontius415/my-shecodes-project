@@ -188,3 +188,11 @@ canvas {
 .WeatherInfo .active:hover {
   text-decoration: none;
 }
+
+.WeatherInfo .otherStats {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}

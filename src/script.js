@@ -24,38 +24,40 @@ function formatDate(timestamp) {
   return `${currentDay} ${currentHour}:${currentMinute}`;
 }
 
+function displayForecast(response) {
+  console.log(response.data);
+}
+
 //Show City with APIs
 function getForecast(coordinates) {
   let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
+let fahrTemperature = null;
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#current-temp");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humid");
-  let precipitationElement = document.querySelector("#precip");
   let windElement = document.querySelector("#wind");
   let dateUpdate = document.querySelector("#today-date");
   let iconUpdate = document.querySelector("#icon");
 
-  fahrTemperature = response.data.main.temp;
+  fahrTemperature = response.data.temperature.current;
 
-  document.querySelector("#city-name").innerHTML = response.data.name;
+  document.querySelector("#city-name").innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(fahrTemperature);
-  humidityElement.innerHTML = response.data.main.humid;
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  precipitationElement.innerHTML = response.data.main.precipitation;
-  windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
-  dateUpdate.innerHTML = formatDate(response.data.dt * 1000);
+  humidityElement.innerHTML = response.data.temperature.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateUpdate.innerHTML = formatDate(response.data.time * 1000);
   iconUpdate.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
-  iconUpdate.setAttribute("alt", response.data.weather[0].description);
+  iconUpdate.setAttribute("alt", response.data.condition.description);
 
-  getForecast(response.data.coord);
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -76,7 +78,7 @@ function displayCelsiusTemp(event) {
   let temperatureElement = document.querySelector("#current-temp");
   fahrLink.classList.remove("active");
   celsiusLink.classList.add("active");
-  let celsiusTemp = (fahrTemp * 5) / 9 - 32;
+  let celsiusTemp = (fahrTemperature * 5) / 9 - 32;
   temperatureElement.innerHTML = Math.round(celsiusTemp);
 }
 
@@ -85,10 +87,8 @@ function displayFahrTemp(event) {
   fahrLink.classList.add("active");
   celsiusLink.classList.remove("active");
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(fahrTemp);
+  temperatureElement.innerHTML = Math.round(fahrTemperature);
 }
-
-let fahrTemp = null;
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", handleSubmit);
