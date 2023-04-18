@@ -196,3 +196,9 @@ canvas {
   overflow-x: auto;
   white-space: nowrap;
 }
+
+.WeatherForecast img {
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+}
