@@ -24,8 +24,48 @@ function formatDate(timestamp) {
   return `${currentDay} ${currentHour}:${currentMinute}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data);
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `"<div class="row">`;
+  forecast.forEach(function (forecastDay) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col">
+                  <div class="WeatherForecastPreview">
+                    <div class="forecast-time">${formatDay(
+                      forecastDay.dt
+                    )}</div>
+                    <canvas width="38" height="38">
+                    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                      forecast.weather[0].icon
+                    }.png"/></canvas>
+                    <div class="forecast-temperature">
+                      <span class="forecast-temperature-max">${Math.round(
+                        forecastDay.temp.max
+                      )}°</span>
+                      <span class="forecast-temperature-min">${Math.round(
+                        forecastDay.temp.min
+                      )}°</span>
+                    </div>
+                  </div>
+                </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+
+  console.log(forecastHTML);
 }
 
 //Show City with APIs
@@ -44,6 +84,8 @@ function showTemperature(response) {
   let dateUpdate = document.querySelector("#today-date");
   let iconUpdate = document.querySelector("#icon");
 
+  displayForecast();
+
   fahrTemperature = response.data.temperature.current;
 
   document.querySelector("#city-name").innerHTML = response.data.city;
@@ -57,7 +99,15 @@ function showTemperature(response) {
   );
   iconUpdate.setAttribute("alt", response.data.condition.description);
 
-  getForecast(response.data.coordinates);
+  getForecast(response.data.coord);
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}&unit=imperial`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function search(city) {
