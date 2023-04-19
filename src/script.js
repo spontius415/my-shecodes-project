@@ -45,18 +45,16 @@ function displayForecast(response) {
         ` <div class="col">
                   <div class="WeatherForecastPreview">
                     <div class="forecast-time">${formatDay(
-                      forecastDay.dt
+                      forecastDay.time
                     )}</div>
                     <canvas width="38" height="38">
-                    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-                      forecast.weather[0].icon
-                    }.png"/></canvas>
+                    <img src="${forecastDay.condition.icon_url}"/></canvas>
                     <div class="forecast-temperature">
                       <span class="forecast-temperature-max">${Math.round(
-                        forecastDay.temp.max
+                        forecastDay.temperature.maximum
                       )}°</span>
                       <span class="forecast-temperature-min">${Math.round(
-                        forecastDay.temp.min
+                        forecastDay.temperature.minimum
                       )}°</span>
                     </div>
                   </div>
@@ -71,11 +69,6 @@ function displayForecast(response) {
 }
 
 //Show City with APIs
-function getForecast(coordinates) {
-  let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
-}
 
 let fahrTemperature = null;
 function showTemperature(response) {
@@ -85,8 +78,6 @@ function showTemperature(response) {
   let windElement = document.querySelector("#wind");
   let dateUpdate = document.querySelector("#today-date");
   let iconUpdate = document.querySelector("#icon");
-
-  displayForecast();
 
   fahrTemperature = response.data.temperature.current;
 
@@ -101,14 +92,12 @@ function showTemperature(response) {
   );
   iconUpdate.setAttribute("alt", response.data.condition.description);
 
-  getForecast(response.data.coord);
+  getForecast(response.data.coordinates);
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "8a9574f8e3f4oafb5b3f19f0e1ee0f1t";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}&unit=imperial`;
-  console.log(apiUrl);
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
